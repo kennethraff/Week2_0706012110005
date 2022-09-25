@@ -7,6 +7,10 @@ import android.os.Handler
 import com.example.week2_0706012110005.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    // INFO: Kalau di android studio saya saat run pertama error, harus rebuild project baru di run biar bisa jalan:)
+
+
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

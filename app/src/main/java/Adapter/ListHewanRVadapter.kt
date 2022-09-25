@@ -15,7 +15,9 @@ import com.example.week2_0706012110005.R
 import com.example.week2_0706012110005.databinding.HewanCardBinding
 import model.Animal
 
-class ListAnimalRvAdapter(val listUser: ArrayList<Animal>, val cardListener: CardListener):
+// INFO: Kalau di android studio saya saat run pertama error, harus rebuild project baru di run biar bisa jalan:)
+
+class ListAnimalRvAdapter(var listUser: ArrayList<Animal>, val cardListener: CardListener):
     RecyclerView.Adapter<ListAnimalRvAdapter.viewHolder>(){
     private var position = -1
     class viewHolder(itemView: View, val cardListener: CardListener): RecyclerView.ViewHolder(itemView) {
@@ -65,4 +67,9 @@ class ListAnimalRvAdapter(val listUser: ArrayList<Animal>, val cardListener: Car
     override fun getItemCount(): Int {
         return listUser.size
     }
+
+//    fun insertFilter(newHewan:ArrayList<Animal>){
+//        listUser= newHewan
+//        notifyDataSetChanged()
+//    }
 }

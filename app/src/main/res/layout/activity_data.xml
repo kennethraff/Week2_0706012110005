@@ -22,12 +22,12 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listDataRV"
         android:layout_width="409dp"
-        android:layout_height="689dp"
+        android:layout_height="0dp"
         android:background="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/filterbuttonKambing_dataActivity" />
 
     <TextView
         android:id="@+id/addHewan_DataActivity"
@@ -52,4 +52,41 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_input_add"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/filterbuttonKambing_dataActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kambing"
+        app:layout_constraintEnd_toStartOf="@+id/filterbuttonAyam_dataActivity"
+        app:layout_constraintStart_toEndOf="@+id/filterbuttonAll_dataActivity"
+        app:layout_constraintTop_toTopOf="@+id/filterbuttonAll_dataActivity" />
+
+    <Button
+        android:id="@+id/filterbuttonSapi_dataActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Sapi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/filterbuttonAyam_dataActivity" />
+
+    <Button
+        android:id="@+id/filterbuttonAyam_dataActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ayam"
+        app:layout_constraintEnd_toStartOf="@+id/filterbuttonSapi_dataActivity"
+        app:layout_constraintStart_toEndOf="@+id/filterbuttonKambing_dataActivity"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/filterbuttonAll_dataActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="All"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

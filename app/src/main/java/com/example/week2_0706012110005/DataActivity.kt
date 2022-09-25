@@ -3,6 +3,9 @@ package com.example.week2_0706012110005
 import Adapter.ListAnimalRvAdapter
 import Database.GlobalVar
 import Interface.CardListener
+import Model.Ayam
+import Model.Kambing
+import Model.Sapi
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -22,7 +25,12 @@ import com.google.android.material.snackbar.Snackbar
 
 class DataActivity : AppCompatActivity(), CardListener{
 
+// INFO: Kalau di android studio saya saat run pertama error, harus rebuild project baru di run biar bisa jalan:)
+
+
     private var adapter= ListAnimalRvAdapter(GlobalVar.listDataAnimal, this)
+    private val adapter2 = ListAnimalRvAdapter(GlobalVar.filterDataAnimal, this)
+
 
     private lateinit var binding: ActivityDataBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,19 +40,79 @@ class DataActivity : AppCompatActivity(), CardListener{
 
         supportActionBar?.hide()
         listener()
+        setupRecyclerView()
     }
 
     override fun onResume() {
         super.onResume()
         textHidden()
-        setupRecyclerView()
+
     }
+
+
+//    private fun sortAyam(){
+//        for(animal in GlobalVar.listDataAnimal ) {
+//            if(animal is Kambing) { GlobalVar.filterDataAnimal .add(animal) } }
+//    }
+//    private fun sortSapi(){
+//
+//    }
+//    private fun sortKambing(){
+//
+//    }
 
     private fun listener() {
         binding.addHewanFABDataActivity.setOnClickListener() {
             val myIntent = Intent(this, InputActivity::class.java)
             startActivity(myIntent);
+
+
         }
+
+        binding.filterbuttonAyamDataActivity.setOnClickListener {
+            GlobalVar.sess = "ayam"
+            GlobalVar.filterDataAnimal .clear()
+            for(i in 0..GlobalVar.listDataAnimal.size-1){
+                if(GlobalVar.listDataAnimal [i] is Ayam){
+                    GlobalVar.filterDataAnimal.add(GlobalVar.listDataAnimal[i])
+                }
+            }
+
+            binding.listDataRV.adapter = adapter2
+            adapter.notifyDataSetChanged()
+        }
+
+        binding.filterbuttonKambingDataActivity.setOnClickListener {
+            GlobalVar.sess = "kambing"
+            GlobalVar.filterDataAnimal.clear()
+            for(i in 0..GlobalVar.listDataAnimal.size-1){
+                if(GlobalVar.listDataAnimal[i] is Kambing){
+                    GlobalVar.filterDataAnimal.add(GlobalVar.listDataAnimal[i])
+                }
+            }
+            binding.listDataRV.adapter = adapter2
+            adapter.notifyDataSetChanged()
+        }
+
+        binding.filterbuttonSapiDataActivity.setOnClickListener {
+            GlobalVar.sess = "sapi"
+            GlobalVar.filterDataAnimal.clear()
+            for(i in 0..GlobalVar.listDataAnimal.size-1){
+                if(GlobalVar.listDataAnimal[i] is Sapi){
+                    GlobalVar.filterDataAnimal.add(GlobalVar.listDataAnimal[i])
+                }
+            }
+            binding.listDataRV.adapter = adapter2
+            adapter.notifyDataSetChanged()
+        }
+
+        binding.filterbuttonAllDataActivity.setOnClickListener {
+            GlobalVar.sess = "asdfas"
+            binding.listDataRV.adapter = adapter
+            adapter.notifyDataSetChanged()
+        }
+
+
     }
 
     private fun setupRecyclerView(){
@@ -99,8 +167,7 @@ class DataActivity : AppCompatActivity(), CardListener{
 
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Delete data hewan")
-            builder.setMessage("Yakin delete data hewan ini?                     " +
-                    "Maaf design super default karena Android studio saya bug ntah knp attributesnya tidak lengkap (textsize textcolor dll. tidak tersedia) dan saya tidak jago design manual dari codingan. Mohon dibantu toleransi :(")
+            builder.setMessage("Yakin delete data hewan ini?")
 
             builder.setPositiveButton(android.R.string.yes) { function, which ->
                 val snackbar = Snackbar.make(

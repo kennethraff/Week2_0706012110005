@@ -2,7 +2,7 @@ package model
 
 import android.os.Parcel
 import android.os.Parcelable
-
+// INFO: Kalau di android studio saya saat run pertama error, harus rebuild project baru di run biar bisa jalan:)
  open class Animal
 
     (var nama:String?,

@@ -15,6 +15,10 @@ import com.example.week2_0706012110005.databinding.ActivityInputBinding
 
 
 class InputActivity : AppCompatActivity() {
+
+    // INFO: Kalau di android studio saya saat run pertama error, harus rebuild project baru di run biar bisa jalan:)
+
+
     private lateinit var binding: ActivityInputBinding
 
     private lateinit var animal: Animal
