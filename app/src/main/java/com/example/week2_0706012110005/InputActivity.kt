@@ -68,6 +68,11 @@ class InputActivity : AppCompatActivity() {
        // binding.jenisHewanTextLayoutInputActivity.editText!!.setText(animal!!.jenis)
         binding.usiaHewanTextLayoutInputActivity.editText!!.setText(animal!!.usia)
 
+        when(animal?.jenis) {
+            "Ayam" -> binding.radioButtonAyam.setChecked(true)
+            "Sapi" -> binding.radioButtonSapi.setChecked(true)
+            "Kambing" -> binding.radioButtonKambing.setChecked(true)
+        }
         binding.textView2.setText("Edit Hewan")
 
 
@@ -100,7 +105,7 @@ class InputActivity : AppCompatActivity() {
             isCompleted = false
         } else if (animal.usia!!.contains(".*[0-100].*".toRegex())) {
             if (animal.usia!!.toInt() > 100) {
-                binding.usiaHewanTextLayoutInputActivity.error = "Rating harus 1-99 tidak boleh lebih dari 100"
+                binding.usiaHewanTextLayoutInputActivity.error = "Usia harus 1-99 tidak boleh lebih dari 100"
                 isCompleted = false
             } else {
                 binding.usiaHewanTextLayoutInputActivity.error = ""
